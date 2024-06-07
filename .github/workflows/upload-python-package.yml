@@ -6,6 +6,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: stable
+    permissions:
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -25,11 +28,8 @@ jobs:
       - name: Install Dependencies
         run: poetry install --no-interaction
       - name: Build and publish
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           rm -rf dist/
           poetry build
-          poetry run twine upload dist/*
-
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
