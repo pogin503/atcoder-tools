@@ -44,6 +44,8 @@ def main():
         print("Usage:")
         print("{} gen -- to generate workspace".format(sys.argv[0]))
         print(
+            "{} codegen -- to generate code for one problem".format(sys.argv[0]))
+        print(
             "{} compile -- to compile codes in your workspace".format(sys.argv[0]))
         print("{} test -- to test codes in your workspace".format(sys.argv[0]))
         print(
