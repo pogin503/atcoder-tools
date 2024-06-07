@@ -2,6 +2,16 @@
 [![codecov](https://codecov.io/gh/kyuridenamida/atcoder-tools/branch/master/graph/badge.svg)](https://codecov.io/gh/kyuridenamida/atcoder-tools)
 [![PyPI](https://img.shields.io/pypi/v/atcoder-tools.svg)](https://pypi.python.org/pypi/atcoder-tools)
 
+【重要】このツールを利用するとルール違反になってしまうケースに関する注意喚起 (2024/6/7)
+====
+
+2024/6/7にAtCoderがatcoder-toolsを含むコード自動生成ツールを特定のコンテストで禁止するルール変更を行いました。詳しくは『[生成AIの台頭に伴うABCにおけるルール変更について](https://atcoder.jp/posts/1246)』を御覧ください。
+
+これに伴い、atcoder-toolsの入力解析を伴うコード自動生成機能をAtCoder Beginer Contestのコンテスト開催期間中に利用してコード生成を行うことはUnrated, Ratedでの参加を問わず禁止となります。
+**現行のatcoder-tools バージョン2.13.0 にはコンテストの種類を検知して生成をスキップする機能はありませんので、各自の責任において利用を避けて頂くようお願い申し上げます。**
+
+ライセンスにもありますように、このツールを利用したことで生じるあらゆる損害に対し、一切の損害に対しatcoder-tools管理者は何の責任も負いません。何卒ご了承くださいませ。
+
 AtCoder Tools
 ====
 Python 3.6 以降で動作する [AtCoder](https://atcoder.jp/) からサンプル入力をダウンロードしたりする際に便利なツールです。
