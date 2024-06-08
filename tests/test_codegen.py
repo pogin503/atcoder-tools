@@ -176,7 +176,7 @@ class TestCodeGenerator(unittest.TestCase):
         pred_result = predict_format(
             ProblemContent(
                 load_text_file(_full_path("echo_test_format.txt")),
-                [Sample(load_text_file(_full_path("echo_test_input.txt")), None)]))
+                [Sample(load_text_file(_full_path("echo_test_input.txt")), None)]), True)
 
         for lang in ALL_LANGUAGES:
             expected_default_generated_code_file = _full_path(
@@ -208,7 +208,7 @@ class TestCodeGenerator(unittest.TestCase):
 
     def _compile_command(self, lang: Language, code_file: str):
         if lang == CPP:
-            return "g++ {} -o a.out -std=c++14".format(code_file)
+            return "g++ {} -o a.out -std=c++20".format(code_file)
         elif lang == JAVA:
             return "javac {}".format(code_file)
         elif lang == RUST:

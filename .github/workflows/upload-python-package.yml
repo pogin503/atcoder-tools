@@ -6,18 +6,21 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: stable
+    permissions:
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.6
+      - name: Set up Python 3.11
         uses: actions/setup-python@v2
         with:
-          python-version: 3.6
+          python-version: 3.11
 
       - name: Install Poetry
         run: |
-          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+          curl -sSL https://install.python-poetry.org | python3 -
 
       - name: Add path for Poetry
         run: echo "$HOME/.poetry/bin" >> $GITHUB_PATH
@@ -25,11 +28,8 @@ jobs:
       - name: Install Dependencies
         run: poetry install --no-interaction
       - name: Build and publish
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           rm -rf dist/
           poetry build
-          poetry run twine upload dist/*
-
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

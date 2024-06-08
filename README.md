@@ -2,6 +2,25 @@
 [![codecov](https://codecov.io/gh/kyuridenamida/atcoder-tools/branch/master/graph/badge.svg)](https://codecov.io/gh/kyuridenamida/atcoder-tools)
 [![PyPI](https://img.shields.io/pypi/v/atcoder-tools.svg)](https://pypi.python.org/pypi/atcoder-tools)
 
+【重要】2.13.0以前のバージョンを利用するとルール違反になってしまうケースに関する注意喚起 (2024/6/7)
+====
+
+2024/6/7にAtCoderがatcoder-toolsを含むコード自動生成ツールを特定のコンテストで禁止するルール変更を行いました。詳しくは『[生成AIの台頭に伴うABCにおけるルール変更について](https://atcoder.jp/posts/1246)』を御覧ください。
+
+atcoder-toolsの入力解析を伴うコード自動生成機能をAtCoder Beginer Contestのコンテスト開催期間中に利用してコード生成を行うことはUnrated, Ratedでの参加を問わず禁止となります。
+
+これに伴い、バージョン2.14.0にて、**開催中の**ABCコンテストにおいては入力解析部分の実行をスキップするような仕様変更を行いました。
+
+挙動としましては、コンテストの種類がABCでありかつ開催中に限り、
+```
+Format prediction is skipped because it's not allowed by AtCoder rules
+```
+という警告と共に入力解析分をスキップするようになっています。入力部分のコードは生成されませんが、コード生成失敗時に生成されるテンプレートは生成され、MOD値やYES/NO等の定数抽出は行われます。また、問題文に存在するテストケースも生成されます。
+
+**2.13.0以前のatcoder-tools にはコンテストの種類を検知して生成をスキップする機能はありませんので、2.14.0にアップデートして頂くか、各自の責任において利用を避けて頂くようお願い申し上げます。**
+
+ライセンスにもありますように、利用しているバージョンに関わらずこのツールを利用したことで生じるあらゆる損害に対し、atcoder-tools管理者は何の責任も負う必要がないことを明記しておきます。
+
 AtCoder Tools
 ====
 Python 3.6 以降で動作する [AtCoder](https://atcoder.jp/) からサンプル入力をダウンロードしたりする際に便利なツールです。
